@@ -2,9 +2,12 @@ import { useState } from 'react';
 import { Button, Modal, ModalHeader, FormGroup, Label } from 'reactstrap';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { validateCommentForm } from '../../utils/validateCommentForm';
+import { useDispatch } from 'react-redux';
+import { addComment } from '../comments/commentsSlice';
 
 function CommentForm({ campsiteId }) {
     const [modalOpen, setModalOpen] = useState(false);
+    const dispatch = useDispatch();
 
     const handleSubmit = (values) => {
 
@@ -12,9 +15,10 @@ function CommentForm({ campsiteId }) {
             campsiteId: parseInt(campsiteId),
             rating: values.rating,
             author: values.author,
-            text: values.commentText
-        }
-        console.log(comment)
+            text: values.commentText,
+            date: new Date(Date.now()).toISOString()
+        };
+        console.log(addComment(comment));
         setModalOpen(false)
     }
 
