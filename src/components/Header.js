@@ -10,6 +10,7 @@ import {
 import NucampLogo from '../app/assets/img/logo.png';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import UserLoginForm from '../user/UserLoginForm';
 
 
 const Header = () => {
@@ -45,6 +46,7 @@ const Header = () => {
                     </NavLink>
                 </NavItem>
             </Nav>
+            <UserLoginForm />
             </Collapse>
     </Navbar>
     )
